@@ -48,7 +48,7 @@ app.post("/post",async(req,res)=>{
 })
 
 
-exports.expressApi = functions.https.onRequest(app);
+// exports.expressApi = functions.https.onRequest(app);
 
 // app.listen(3000,()=>{
 //     console.log("on port")
