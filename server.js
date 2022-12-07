@@ -1,16 +1,7 @@
-import express from 'express'
-const app = express()
-const port = process.env.PORT || 3000
+const express = require("express");
+const app = express();
 
-// app.get('/', (req, res) => {
-//   console.log('Response from bijo' + req.ip);
-//   res.send('Response from bijo' + req.ip);
-// })
-
-// const mongoose = require("mongoose");
-
-import mongoose from 'mongoose'
-
+const mongoose = require("mongoose");
 
 app.use(express.json());
 
@@ -57,7 +48,8 @@ app.post("/post",async(req,res)=>{
 })
 
 
+exports.expressApi = functions.https.onRequest(app);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// app.listen(3000,()=>{
+//     console.log("on port")
+// })
