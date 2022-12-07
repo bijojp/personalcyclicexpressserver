@@ -7,11 +7,14 @@ const port = process.env.PORT || 3000
 //   res.send('Response from bijo' + req.ip);
 // })
 
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-// app.use(express.json());
+import mongoose from 'mongoose'
 
-app.use(cors({origin:true}));
+
+app.use(express.json());
+
+// app.use(cors({origin:true}));
 
 mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.net/gamedata",{
     useNewUrlParser:true,
