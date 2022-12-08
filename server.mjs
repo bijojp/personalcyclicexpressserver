@@ -23,9 +23,13 @@ mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.n
 
     if(!err){
         console.log("Conected to db");
+        res.send("Conected to db");
+
     }else{
         console.log("error is there");
         console.log(err);
+        res.send("error is there");
+
 
     }
 
@@ -72,4 +76,7 @@ app.post("/post",async(req,res)=>{
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
+
+  res.send(`Example app listening on port ${port}`); 
+
 })
