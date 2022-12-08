@@ -51,7 +51,7 @@ app.post("/post",async(req,res)=>{
     // });
 
     // const val = await data.save();
-    res.json(val); 
+    // res.json(val); 
 
     res.send("posted"); 
 })
