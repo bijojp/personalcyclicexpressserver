@@ -50,12 +50,20 @@ app.post("/post",async(req,res)=>{
     //     id:4214525
     // });
 
-    // const val = await data.save();
-    res.json({
+    const data = {
         name:"testnameiadded",
         email:"testemailiadded",
         id:4214525
-    }); 
+    };
+
+    const val = await data.save();
+
+    res.json(val); 
+    // res.json({
+    //     name:"testnameiadded",
+    //     email:"testemailiadded",
+    //     id:4214525
+    // }); 
 
     res.send("posted"); 
 })
