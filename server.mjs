@@ -1,11 +1,20 @@
-const express = require("express");
-const app = express();
+import express from 'express'
+const app = express()
+const port = process.env.PORT || 3000
 
-const mongoose = require("mongoose");
+// app.get('/', (req, res) => {
+//   console.log('Response from bijo' + req.ip);
+//   res.send('Response from bijo' + req.ip);
+// })
 
-app.use(express.json());
+// const mongoose = require("mongoose");
 
-// app.use(cors({origin:true}));
+import mongoose from 'mongoose'
+
+
+// app.use(express.json());
+
+app.use(cors({origin:true}));
 
 mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.net/gamedata",{
     useNewUrlParser:true,
@@ -48,8 +57,7 @@ app.post("/post",async(req,res)=>{
 })
 
 
-// exports.expressApi = functions.https.onRequest(app);
 
-// app.listen(3000,()=>{
-//     console.log("on port")
-// })
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
