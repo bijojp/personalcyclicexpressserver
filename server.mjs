@@ -12,9 +12,9 @@ const port = process.env.PORT || 3000
 import mongoose from 'mongoose'
 
 
-// app.use(express.json());
+app.use(express.json());
 
-app.use(cors({origin:true}));
+// app.use(cors({origin:true}));
 
 mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.net/gamedata",{
     useNewUrlParser:true,
@@ -33,12 +33,12 @@ mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.n
 
 
 //schema
-const sch = {
-    name:String,
-    email:String,
-    id:Number
-}
-const monmodel = mongoose.model("NEWCOL",sch);
+// const sch = {
+//     name:String,
+//     email:String,
+//     id:Number
+// }
+// const monmodel = mongoose.model("NEWCOL",sch);
 
 
 //post
