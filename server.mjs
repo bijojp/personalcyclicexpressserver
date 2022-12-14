@@ -4,9 +4,9 @@ const port = process.env.PORT || 3000
 
 app.all('/', (req, res) => {
     console.log("Just got a request!")
-    res.send("Yo! this is test ok")
+    // res.send("Yo! this is test ok")
 
-    console.log("Just got a request! from the user")
+    // console.log("Just got a request! from the user")
 
     res.send("a new sentence");
 
