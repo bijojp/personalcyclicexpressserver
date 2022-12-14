@@ -1,17 +1,12 @@
-import { MongoClient } from 'mongodb'
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 3000
 
-MongoClient.connect('mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.net/gamedata', (err, client) => {
-  if (err) throw err
-
-  const db = client.db('gamedata')
-
-  db.collection('gamedata').find().toArray((err, result) => {
-    if (err) throw err
-
-    console.log(result)
-  })
+app.all('/', (req, res) => {
+    console.log("Just got a request!")
+    res.send('Yo!')
 })
-
+app.listen(port)
 
 
 
