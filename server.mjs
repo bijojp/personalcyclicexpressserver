@@ -7,6 +7,8 @@ app.all('/', (req, res) => {
 
     res.send("a new sentence")
 
+    res.send(`Example app listening on port ${port}`); 
+
 })
 app.listen(port)
 
