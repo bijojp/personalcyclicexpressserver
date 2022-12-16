@@ -3,11 +3,11 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.all('/', (req, res) => {
-    console.log("Just got a request!")
+    console.log("Just got a request! from server")
 
     res.send("a new sentence")
 
-    res.send(`Example app listening on port ${port}`); 
+    // res.send(`Example app listening on port ${port}`); 
 
 })
 app.listen(port)
