@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000
 
 import mongoose from 'mongoose'
 
-app.use(express.json());
+// app.use(express.json());
 
 
 mongoose.set('strictQuery', true);
