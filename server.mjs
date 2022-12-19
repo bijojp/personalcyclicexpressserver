@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000
 import mongoose from 'mongoose'
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }))
+// app.use(express.urlencoded({ extended: false }))
 
 ////
 
@@ -37,16 +37,16 @@ mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.n
 
 app.post("/post",async(req,res)=>{
     console.log("inside post function");
-    // const data = new monmodel({
-    //     name:req.body.name,
-    //     email:req.body.email,
-    //     id:req.body.id
-    // });
+    const data = new monmodel({
+        name:req.body.name,
+        email:req.body.email,
+        id:req.body.id
+    });
 
-    // const val = await data.save();
-    // res.json(val); 
+    const val = await data.save();
+    res.json(val); 
 
-    // // res.send("posted"); 
+    // res.send("posted"); 
 })
 
 
@@ -61,17 +61,17 @@ app.listen(port, () => {
 
 
 
-app.all('/', (req, res) => {
-    console.log("Just got a request! from server")
+// app.all('/', (req, res) => {
+//     console.log("Just got a request! from server")
 
-    // res.send("a new sentence")
+//     // res.send("a new sentence")
 
-    // res.send(`Example app listening on port ${port}`); 
-    res.send('Response from bijo' + req.ip);
+//     // res.send(`Example app listening on port ${port}`); 
+//     res.send('Response from bijo' + req.ip);
 
 
-})
-app.listen(port)
+// })
+// app.listen(port)
 
 
 
