@@ -14,25 +14,25 @@ app.use(express.urlencoded({ extended: false }))
 
 // mongoose.set('strictQuery', true);
 
-// mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.net/gamedata",{
-//     useNewUrlParser:true,
-//     useUnifiedTopology:true,
+mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.net/gamedata",{
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
     
-// },(err)=>{
+},(err)=>{
 
-//     if(!err){
-//         console.log("Conected to db");
-//         res.send("Conected to db");
+    if(!err){
+        console.log("Conected to db");
+        res.send("Conected to db");
 
-//     }else{
-//         console.log("error is there");
-//         console.log(err);
-//         res.send("error is there");
+    }else{
+        console.log("error is there");
+        console.log(err);
+        res.send("error is there");
 
 
-//     }
+    }
 
-// })
+})
 
 
 // app.post("/post",async(req,res)=>{
