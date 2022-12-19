@@ -35,7 +35,7 @@ mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.n
 })
 
 
-schema
+
 const sch = {
     name:String,
     email:String,
