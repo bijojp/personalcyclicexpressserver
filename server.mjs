@@ -1,168 +1,62 @@
-import express from 'express'
-const app = express()
-const port = process.env.PORT || 3000
-
-// const mongoose = require("mongoose");
-
-import mongoose from 'mongoose'
-
-app.use(express.json());
-// app.use(express.urlencoded({ extended: false }))
-
-////
-
-
-// mongoose.set('strictQuery', true);
-
-mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.net/gamedata",{
+import express, { json } from "express";
+import res from "express/lib/response";
+import { connect, model } from "mongoose";
+const app = express();
+app.use(json());
+//Database connection set up
+connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.net/gamedata",{
     useNewUrlParser:true,
     useUnifiedTopology:true,
-    
 },(err)=>{
-
     if(!err){
-        console.log("Conected to db");
-        res.send("Conected to db");
-
+        console.log("Connected to db");
     }else{
         console.log("error is there");
-        console.log(err);
-        res.send("error is there");
-
-
     }
-
 })
-
-
-
-const sch = {
-    name:String,
-    email:String,
-    id:Number
+//Schema--Table/collection creation
+const sch={
+name:String,
+email: String,
+id:Number
 }
-const monmodel = mongoose.model("NEWCOL",sch);
-
-
-app.post("/post",async(req,res)=>{
-    console.log("inside post function");
-    const data = new monmodel({
-        name:req.body.name,
-        email:req.body.email,
-        id:req.body.id
+const monmodel=model("NEWCOL",sch);
+//POST
+app.post("/post",async(req, res)=>{
+  console.log("Inside post function");
+const data=monmodel({
+  name: req.body.name,
+  email: req.body.email,
+  id: req.body.id
+});
+const val= await data.save();
+res.send("Posted");
+})
+//PUT
+app.put("/update/:id",async(req,res)=>{
+  let upid=req.params.id;
+  let upname=req.body.name;
+  let upemail=req.body.email;
+  //Find & Update
+  monmodel.findOneAndUpdate({id:upid},{$set:{name:upname,email:upemail}},{new:true},(err,data)=>{
+if(err)
+    res.send("ERROR !!");
+else
+{
+if(data==null)
+res.send("Nothing found");
+else
+res.send(data);
+}
+  });//err,data arrow function closing
+});//req,res arrow function closing
+//FETCH GET
+app.get("/fetch/:id",(req,res)=>{
+    let fetchid=req.params.id;
+    monmodel.find(({id:fetchid}),(err,val)=>{
+    res.send(val);
     });
-
-    const val = await data.save();
-    res.json(val); 
-
-    // res.send("posted"); 
 })
-
-
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(3000,()=>{
+    console.log("on port 3000")
 })
-
-
-
-
-
-
-
-// app.all('/', (req, res) => {
-//     console.log("Just got a request! from server")
-
-//     // res.send("a new sentence")
-
-//     // res.send(`Example app listening on port ${port}`); 
-//     res.send('Response from bijo' + req.ip);
-
-
-// })
-// app.listen(port)
-
-
-
-// import express from 'express'
-// const app = express()
-// const port = process.env.PORT || 3000
-
-// // app.get('/', (req, res) => {
-// //   console.log('Response from bijo' + req.ip);
-// //   res.send('Response from bijo' + req.ip);
-// // })
-
-// // const mongoose = require("mongoose");
-
-// import mongoose from 'mongoose'
-
-
-// app.use(express.json());
-
-// // app.use(cors({origin:true}));
-
-// mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.net/gamedata",{
-//     useNewUrlParser:true,
-//     useUnifiedTopology:true
-// },(err)=>{
-
-//     if(!err){
-//         console.log("Conected to db");
-//         res.send("Conected to db");
-
-//     }else{
-//         console.log("error is there");
-//         console.log(err);
-//         res.send("error is there");
-
-
-//     }
-
-// })
-
-
-// //schema
-// // const sch = {
-// //     name:String,
-// //     email:String,
-// //     id:Number
-// // }
-// // const monmodel = mongoose.model("NEWCOL",sch);
-
-
-// //post
-// app.post("/post",async(req,res)=>{
-//     console.log("inside post function");
-//     // const data = new monmodel({
-//     //     name:"testnameiadded",
-//     //     email:"testemailiadded",
-//     //     id:4214525
-//     // });
-
-//     const data = {
-//         name:"testnameiadded",
-//         email:"testemailiadded",
-//         id:4214525
-//     };
-
-//     const val = await data.save();
-
-//     res.json(val); 
-//     // res.json({
-//     //     name:"testnameiadded",
-//     //     email:"testemailiadded",
-//     //     id:4214525
-//     // }); 
-
-//     res.send("posted"); 
-// })
-
-
-
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`)
-
-//   res.send(`Example app listening on port ${port}`); 
-
-// })
