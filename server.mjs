@@ -35,25 +35,25 @@ mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.n
 })
 
 
-// app.post("/post",async(req,res)=>{
-//     console.log("inside post function");
-//     // const data = new monmodel({
-//     //     name:req.body.name,
-//     //     email:req.body.email,
-//     //     id:req.body.id
-//     // });
+app.post("/post",async(req,res)=>{
+    console.log("inside post function");
+    // const data = new monmodel({
+    //     name:req.body.name,
+    //     email:req.body.email,
+    //     id:req.body.id
+    // });
 
-//     // const val = await data.save();
-//     // res.json(val); 
+    // const val = await data.save();
+    // res.json(val); 
 
-//     // // res.send("posted"); 
-// })
+    // // res.send("posted"); 
+})
 
 
 
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`)
-// })
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 
 
 
