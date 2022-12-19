@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000
 
 // const mongoose = require("mongoose");
 
-import mongoose from 'mongoose'
+// import mongoose from 'mongoose'
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
