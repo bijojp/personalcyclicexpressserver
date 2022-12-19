@@ -29,18 +29,43 @@ mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.n
 })
 
 
+app.post("/post",async(req,res)=>{
+    console.log("inside post function");
+    const data = new monmodel({
+        name:req.body.name,
+        email:req.body.email,
+        id:req.body.id
+    });
 
-app.all('/', (req, res) => {
-    console.log("Just got a request! from server")
+    const val = await data.save();
+    res.json(val); 
 
-    // res.send("a new sentence")
-
-    // res.send(`Example app listening on port ${port}`); 
-    res.send('Response from bijo' + req.ip);
-
-
+    // res.send("posted"); 
 })
-app.listen(port)
+
+
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
+
+
+
+
+
+
+// app.all('/', (req, res) => {
+//     console.log("Just got a request! from server")
+
+//     // res.send("a new sentence")
+
+//     // res.send(`Example app listening on port ${port}`); 
+//     res.send('Response from bijo' + req.ip);
+
+
+// })
+// app.listen(port)
 
 
 
