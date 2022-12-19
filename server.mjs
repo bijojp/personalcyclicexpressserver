@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000
 
 // const mongoose = require("mongoose");
 
-import mongoose from 'mongoose'
+// import mongoose from 'mongoose'
 
 // app.use(express.json());
 // app.use(express.urlencoded({ extended: false }))
@@ -61,16 +61,16 @@ import mongoose from 'mongoose'
 
 
 
-// app.all('/', (req, res) => {
-//     console.log("Just got a request! from server")
+app.all('/', (req, res) => {
+    console.log("Just got a request! from server")
 
-//     // res.send("a new sentence")
+    // res.send("a new sentence")
 
-//     // res.send(`Example app listening on port ${port}`); 
-//     res.send('Response from bijo' + req.ip);
+    // res.send(`Example app listening on port ${port}`); 
+    res.send('Response from bijo' + req.ip);
 
 
-// })
+})
 app.listen(port)
 
 
