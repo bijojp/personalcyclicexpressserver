@@ -35,6 +35,15 @@ mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.n
 })
 
 
+schema
+const sch = {
+    name:String,
+    email:String,
+    id:Number
+}
+const monmodel = mongoose.model("NEWCOL",sch);
+
+
 app.post("/post",async(req,res)=>{
     console.log("inside post function");
     const data = new monmodel({
