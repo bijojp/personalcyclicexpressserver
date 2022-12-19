@@ -2,6 +2,12 @@ import express from 'express'
 const app = express()
 const port = process.env.PORT || 3000
 
+// const mongoose = require("mongoose");
+
+import mongoose from 'mongoose'
+
+
+
 app.all('/', (req, res) => {
     console.log("Just got a request! from server")
 
