@@ -6,9 +6,12 @@ const port = process.env.PORT || 3000
 
 import mongoose from 'mongoose'
 
+mongoose.set('strictQuery', true);
+
 mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.net/gamedata",{
-    // useNewUrlParser:true,
-    // useUnifiedTopology:true
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
+    
 },(err)=>{
 
     if(!err){
