@@ -6,7 +6,7 @@ app.use(json());
 
 
 //Database connection set up
-connect("mongodb+srv://bijo:TfE68elk91rxn7zV>@cluster0.gbjr68m.mongodb.net/?retryWrites=true&w=majority",{
+mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV>@cluster0.gbjr68m.mongodb.net/?retryWrites=true&w=majority",{
     useNewUrlParser:true,
     useUnifiedTopology:true,
 },(err)=>{
