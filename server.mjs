@@ -6,16 +6,26 @@ app.use(json());
 
 
 //Database connection set up
-mongoose.connect("mongodb+srv://bijo:TfE68elk91rxn7zV>@cluster0.gbjr68m.mongodb.net/?retryWrites=true&w=majority",{
-    useNewUrlParser:true,
-    useUnifiedTopology:true,
-},(err)=>{
-    if(!err){
-        console.log("Connected to db");
-    }else{
-        console.log("error is there");
-    }
-})
+// mongoose.connect("mongodb+srv://bijo:>@cluster0.gbjr68m.mongodb.net/?retryWrites=true&w=majority",{
+//     useNewUrlParser:true,
+//     useUnifiedTopology:true,
+// },(err)=>{
+//     if(!err){
+//         console.log("Connected to db");
+//     }else{
+//         console.log("error is there");
+//     }
+// })
+
+
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://bijo:TfE68elk91rxn7zV@cluster0.gbjr68m.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+client.connect(err => {
+  const collection = client.db("gamedata").collection("newcols");
+  // perform actions on the collection object
+  client.close();
+});
 
 
 // //Schema--Table/collection creation
